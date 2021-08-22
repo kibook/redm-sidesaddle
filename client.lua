@@ -45,8 +45,10 @@ AddEventHandler("sidesaddle", function(side)
 	if currentSide then
 		SetResourceKvp("side", side)
 	else
-		stopAnim(PlayerPedId(), currentAnim)
-		currentAnim = nil
+		if currentAnim then
+			stopAnim(PlayerPedId(), currentAnim)
+			currentAnim = nil
+		end
 
 		DeleteResourceKvp("side")
 	end
